@@ -38,8 +38,8 @@ docker-compose run --rm --entrypoint "\
 echo
 
 
-echo "### Starting nginx ..."
-docker-compose up --force-recreate -d nginx
+echo "### Starting a generic nginx server..."
+docker stop web; docker run -it --rm -d -p 80:80 --name web -v $PWD/data/certbot/www/:/usr/share/nginx/html nginx;
 echo
 
 echo "### Deleting dummy certificate for $domains ..."
